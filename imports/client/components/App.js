@@ -4,27 +4,19 @@ import { connect } from 'react-apollo';
 class App extends React.Component {
   render() {
     const { Skaters } = this.props;
-    console.log('App render Skaters', Skaters); 
-
     const skaters = Skaters && Skaters.data;
     console.log('App render(): skaters', skaters); 
-    let data = [];
-
-    // let data = _.sortBy(producers, 'registrationRequests' );
-    
-    return (
-      // let { textStyle } = this.style;
+    let data = _.sortBy(skaters, 'CF60' );
+    return (      
       <div className="main-container">
-        <h1>Producer Facts</h1>          
-        <h3>Registration Requests Total</h3>          
+        <h1>Puck 2.0</h1>          
         <div>
-          {_.map( data.reverse() , ({ name, registrationRequests }, index) => {
+          {_.map( data.reverse() , ({ Player_Name, Team, Pos, GF60, CF60 }, index) => {
             return (
               <div className="vendor" key={index}>
                 <span style={{}}>
-                  {name}: 
+                  {Player_Name}, {Team}, {Pos}, {GF60}, {CF60},
                 </span>
-                 {registrationRequests}
               </div>
             );
           })}
@@ -39,7 +31,7 @@ function mapQueriesToProps() {
     Skaters: {
       query: gql`{
         data {
-          Team
+          Player_Name, Team, Pos, GF60, CF60
         }
       }
       `,
