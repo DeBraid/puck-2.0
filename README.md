@@ -1,10 +1,12 @@
-## Meteor Apollo Youtube Search
+## Puck Mobile
 
+
+To run the app in develpment: 
 ```js
 npm install
 
 meteor
 ```
 
-## Contribute
-It'd be cool to make this example better! Help out!
+## Goals
+A mobile app for hockey analytics.
