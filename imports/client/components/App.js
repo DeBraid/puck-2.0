@@ -6,7 +6,7 @@ class App extends React.Component {
     const { Skaters } = this.props;
     const skaters = Skaters && Skaters.data;
     console.log('App render(): skaters', skaters); 
-    let data = _.sortBy(skaters, 'CF60' );
+    let data = _.sortBy(skaters, 'GF60' );
     return (      
       <div className="main-container">
         <h1>Puck 2.0</h1>          
@@ -27,14 +27,12 @@ class App extends React.Component {
 }
 
 function mapQueriesToProps() {
+  let gq = `data {
+    Player_Name, Team, Pos, GF60, CF60
+  }`
   return {
     Skaters: {
-      query: gql`{
-        data {
-          Player_Name, Team, Pos, GF60, CF60
-        }
-      }
-      `,
+      query: gql`{${gq}}`,
       forceFetch: true,
     }
   }
